@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.handler = exports.client = void 0;
+const BotClient_1 = require("./classes/BotClient");
+const Handler_1 = require("./classes/Handler");
+const onInteractionCreate_1 = require("./events/onInteractionCreate");
+const onMessageCreate_1 = require("./events/onMessageCreate");
+exports.client = new BotClient_1.BotClient();
+exports.handler = new Handler_1.SlashHandler();
+const onReady_1 = require("./events/onReady");
+exports.client.onEvent("ready", onReady_1.onReady);
+exports.client.onEvent("interactionCreate", onInteractionCreate_1.onInteractionCreate);
+exports.client.onEvent("messageCreate", onMessageCreate_1.onMessageCreate);
+require("./stock/stockData");
